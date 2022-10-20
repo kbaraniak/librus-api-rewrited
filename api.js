@@ -6,7 +6,7 @@ const {login, pass} = require('./secret')
 
 class Librus {
   login = login;
-  password = pass
+  password = pass;
   logged_in = false;
   Token = null;
   host = "https://api.librus.pl/";

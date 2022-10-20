@@ -1,0 +1,254 @@
+{
+    "Resources": {
+        DENIED "StudentInsurances": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/StudentInsurances"
+        },
+        EXPERIMINETAL "TextGrades": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/TextGrades"
+        },
+        ZACHOWANIE "BehaviourGrades": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/BehaviourGrades"
+        },
+        WOLNE DNI KLASY "ClassFreeDays": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/ClassFreeDays"
+        },
+        DENIED "AdditionalModulesAccess": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/AdditionalModulesAccess"
+        },
+        OCENY "Grades": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Grades"
+        },
+        POWIADOMIENIA "PushConfigurations": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PushConfigurations"
+        },
+        DENIED - OSIAGNIECIA "SpecialAchievement": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SpecialAchievement"
+        },
+        LEKCJE "Lessons": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Lessons"
+        },
+        DENIED "WcagSettings": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/WcagSettings"
+        },
+        PREMIUM "PremiumAccount": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PremiumAccount"
+        },
+        PREMIUM/DEMO "PremiumAccountInfo": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PremiumAccountInfo"
+        },
+        DENIED "Justifications": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Justifications"
+        },
+        NIEOBECNOSCI NAUCZYCIELI "TeacherFreeDays": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/TeacherFreeDays"
+        },
+        DENIED "Employees": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Employees"
+        },
+        O MNIE "Me": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Me"
+        },
+        POWIADOMIENIA "ReceivingPush": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/ReceivingPush"
+        },
+        PREMIUM "SilentNight": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SilentNight"
+        },
+        DENIED "SchoolAgreement": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SchoolAgreement"
+        },
+        DENIED "Surveys": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Surveys"
+        },
+        DENIED "Log": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Log"
+        },
+        UPRAWNIENIA WYSYŁANIE ZALACZNIKOW "FileTransferRestrictions": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/FileTransferRestrictions"
+        },
+        PLAN LEKCJI "Timetables": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Timetables"
+        },
+        DENIED "ChangeRegister": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/ChangeRegister"
+        },
+        DENIED "OsinInfo": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/OsinInfo"
+        },
+        DENIED | OPISOWA OCENA ZACHOWANIA "BehaviourDescriptiveGrades": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/BehaviourDescriptiveGrades"
+        },
+        DENIED "SchoolNicknames": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SchoolNicknames"
+        },
+        OCENY OPISOWE "DescriptiveGrades": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/DescriptiveGrades"
+        },
+        DENIED "PushChanges": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PushChanges"
+        },
+        DENIED "StudentDuty": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/StudentDuty"
+        },
+        KOLORY "Colors": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Colors"
+        },
+        O KLASIE "Classes": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Classes"
+        },
+        UZYTKOWNICY "Users": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Users"
+        },
+        FOR TEACHERS "Motions": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Motions"
+        },
+        ZEBRANIA "ParentTeacherConferences": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/ParentTeacherConferences"
+        },
+        FREKWENCJA "Attendances": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Attendances"
+        },
+        ZMIANY SYSTEMU "WhatsNew": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/WhatsNew"
+        },
+        DENIED "AutoLoginToken": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/AutoLoginToken"
+        },
+        SZCZESLIWY NUMER "LuckyNumbers": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/LuckyNumbers"
+        },
+        ZADANIA DOMOWE "HomeWorks": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/HomeWorks"
+        },
+        KATEGORIE OCEN "PointGrades": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PointGrades"
+        },
+        POMOC DO SYNERGI "Help": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Help"
+        },
+        DENIED "SchoolInfo": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SchoolInfo"
+        },
+        EXPERIMINETAL "DeclarationOfAvailability": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/DeclarationOfAvailability"
+        },
+        USTAWIENIA SZKOLY "Units": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Units"
+        },
+        DENIED "Educators": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Educators"
+        },
+        EXPERIMINETAL "DescriptiveTextGrades": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/DescriptiveTextGrades"
+        },
+        DENIED "BannerAds": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/BannerAds"
+        },
+        EXPERIMINETAL "Messages": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Messages"
+        },
+        PLAN LEKCJI - ELEMENTY "TimetableEntries": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/TimetableEntries"
+        },
+        ZACHOWANIE "BehaviourGrade": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/BehaviourGrade"
+        },
+        O UCZNIU "UserProfile": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/UserProfile"
+        },
+        PRZEDMIOTY LEKCYJNE "Subjects": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Subjects"
+        },
+        CZAS SYSTEMU "SystemData": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SystemData"
+        },
+        EXPERIMINETAL "SchoolReceiveMessage": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SchoolReceiveMessage"
+        },
+        REGULAMIN SYSTEMU "Regulations": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Regulations"
+        },
+        DENIED "HomeWorkAssignments": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/HomeWorkAssignments"
+        },
+        EXPERIMINETAL "IdwUser": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/IdwUser"
+        },
+        WYCIECZKI SZKOLNE | EXPERIMINETAL "SchoolTrips": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SchoolTrips"
+        },
+        DANE TECH SZKOLY "Schools": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Schools"
+        },
+        KALENDARZ WOLNYCH DNI "Calendars": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Calendars"
+        },
+        DENIED "PremiumAccountDemo": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PremiumAccountDemo"
+        },
+        DENIED "UserAppActivity": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/UserAppActivity"
+        },
+        REALIZACJE "Realizations": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Realizations"
+        },
+        DENIED "DefaultStudentPanel": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/DefaultStudentPanel"
+        },
+        DENIED "NotificationCenterDeferrals": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/NotificationCenterDeferrals"
+        },
+        DENIED "ClientVersion": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/ClientVersion"
+        },
+        SALE LEKCYJNE "Classrooms": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Classrooms"
+        },
+        EXPERIMINETAL "SchoolFiles": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SchoolFiles"
+        },
+        NOTATKI "Notes": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Notes"
+        },
+        EXPERIMINETAL "PushDevices": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PushDevices"
+        },
+        OGLOSZENIA SZKOLNE "SchoolNotices": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SchoolNotices"
+        },
+        PREMIUM "PremiumAccountDemoExpire": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PremiumAccountDemoExpire"
+        },
+        POWIADOMIENIA Z MODULOW "NotificationCenter": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/NotificationCenter"
+        },
+        KLASY WIRTUALNE "VirtualClasses": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/VirtualClasses"
+        },
+        WYNIKI Z EGZAMINOW | EXPERIMINETAL "ExamResult": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/ExamResult"
+        },
+        LOGOWANIE DO API "Auth": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Auth"
+        },
+        EXPERIMINETAL "BaseTextGrades": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/BaseTextGrades"
+        },
+        EXPERIMINETAL "Duties": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Duties"
+        },
+        DENIED "PlannedLessons": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/PlannedLessons"
+        },
+        ZASTEPSTWA "Substitutions": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/Substitutions"
+        },
+        EXPERIMINETAL "SchoolFreeDays": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/SchoolFreeDays"
+        },
+        EXPERIMINETAL "OneRoster": {
+            "Url": "https:\/\/api.librus.pl\/2.0\/OneRoster"
+        }
+    },
+    "Url": "https:\/\/api.librus.pl\/2.0\/Root"
+}

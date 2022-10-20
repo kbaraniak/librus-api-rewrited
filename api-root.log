@@ -3,7 +3,7 @@
         DENIED "StudentInsurances": {
             "Url": "https:\/\/api.librus.pl\/2.0\/StudentInsurances"
         },
-        EXPERIMINETAL "TextGrades": {
+        EXPERIMENTAL "TextGrades": {
             "Url": "https:\/\/api.librus.pl\/2.0\/TextGrades"
         },
         ZACHOWANIE "BehaviourGrades": {
@@ -129,7 +129,7 @@
         DENIED "SchoolInfo": {
             "Url": "https:\/\/api.librus.pl\/2.0\/SchoolInfo"
         },
-        EXPERIMINETAL "DeclarationOfAvailability": {
+        EXPERIMENTAL "DeclarationOfAvailability": {
             "Url": "https:\/\/api.librus.pl\/2.0\/DeclarationOfAvailability"
         },
         USTAWIENIA SZKOLY "Units": {
@@ -138,13 +138,13 @@
         DENIED "Educators": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Educators"
         },
-        EXPERIMINETAL "DescriptiveTextGrades": {
+        EXPERIMENTAL "DescriptiveTextGrades": {
             "Url": "https:\/\/api.librus.pl\/2.0\/DescriptiveTextGrades"
         },
         DENIED "BannerAds": {
             "Url": "https:\/\/api.librus.pl\/2.0\/BannerAds"
         },
-        EXPERIMINETAL "Messages": {
+        EXPERIMENTAL "Messages": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Messages"
         },
         PLAN LEKCJI - ELEMENTY "TimetableEntries": {
@@ -162,7 +162,7 @@
         CZAS SYSTEMU "SystemData": {
             "Url": "https:\/\/api.librus.pl\/2.0\/SystemData"
         },
-        EXPERIMINETAL "SchoolReceiveMessage": {
+        EXPERIMENTAL "SchoolReceiveMessage": {
             "Url": "https:\/\/api.librus.pl\/2.0\/SchoolReceiveMessage"
         },
         REGULAMIN SYSTEMU "Regulations": {
@@ -171,10 +171,10 @@
         DENIED "HomeWorkAssignments": {
             "Url": "https:\/\/api.librus.pl\/2.0\/HomeWorkAssignments"
         },
-        EXPERIMINETAL "IdwUser": {
+        EXPERIMENTAL "IdwUser": {
             "Url": "https:\/\/api.librus.pl\/2.0\/IdwUser"
         },
-        WYCIECZKI SZKOLNE | EXPERIMINETAL "SchoolTrips": {
+        WYCIECZKI SZKOLNE | EXPERIMENTAL "SchoolTrips": {
             "Url": "https:\/\/api.librus.pl\/2.0\/SchoolTrips"
         },
         DANE TECH SZKOLY "Schools": {
@@ -204,13 +204,13 @@
         SALE LEKCYJNE "Classrooms": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Classrooms"
         },
-        EXPERIMINETAL "SchoolFiles": {
+        EXPERIMENTAL "SchoolFiles": {
             "Url": "https:\/\/api.librus.pl\/2.0\/SchoolFiles"
         },
         NOTATKI "Notes": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Notes"
         },
-        EXPERIMINETAL "PushDevices": {
+        EXPERIMENTAL "PushDevices": {
             "Url": "https:\/\/api.librus.pl\/2.0\/PushDevices"
         },
         OGLOSZENIA SZKOLNE "SchoolNotices": {
@@ -225,16 +225,16 @@
         KLASY WIRTUALNE "VirtualClasses": {
             "Url": "https:\/\/api.librus.pl\/2.0\/VirtualClasses"
         },
-        WYNIKI Z EGZAMINOW | EXPERIMINETAL "ExamResult": {
+        WYNIKI Z EGZAMINOW | EXPERIMENTAL "ExamResult": {
             "Url": "https:\/\/api.librus.pl\/2.0\/ExamResult"
         },
         LOGOWANIE DO API "Auth": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Auth"
         },
-        EXPERIMINETAL "BaseTextGrades": {
+        EXPERIMENTAL "BaseTextGrades": {
             "Url": "https:\/\/api.librus.pl\/2.0\/BaseTextGrades"
         },
-        EXPERIMINETAL "Duties": {
+        EXPERIMENTAL "Duties": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Duties"
         },
         DENIED "PlannedLessons": {
@@ -243,10 +243,10 @@
         ZASTEPSTWA "Substitutions": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Substitutions"
         },
-        EXPERIMINETAL "SchoolFreeDays": {
+        EXPERIMENTAL "SchoolFreeDays": {
             "Url": "https:\/\/api.librus.pl\/2.0\/SchoolFreeDays"
         },
-        EXPERIMINETAL "OneRoster": {
+        EXPERIMENTAL "OneRoster": {
             "Url": "https:\/\/api.librus.pl\/2.0\/OneRoster"
         }
     },

@@ -99,7 +99,7 @@
         UZYTKOWNICY "Users": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Users"
         },
-        FOR TEACHERS "Motions": {
+        ONLY FOR TEACHERS "Motions": {
             "Url": "https:\/\/api.librus.pl\/2.0\/Motions"
         },
         ZEBRANIA "ParentTeacherConferences": {

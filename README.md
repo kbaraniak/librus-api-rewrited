@@ -2,8 +2,8 @@
 
 ## Example Usage
 
-### You Need to change a secret.js
-
+### You Need to create & change a secret.js
+*File not added for security reasons*
 ```
 var config= {};
 config.login="login-synergia"

@@ -2,7 +2,7 @@ const LibrusCore = require("./core");
 const LibrusGrades = require("./modules/grades");
 const var_dump = require('var_dump')
 
-const { login, pass } = require("./secret");
+const { login, pass } = require("./config");
 
 let core = new LibrusCore();
 let grades = new LibrusGrades();

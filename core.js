@@ -2,11 +2,7 @@ const querystring = require("querystring");
 const request = require("request");
 const var_dump = require("var_dump");
 
-const { login, pass } = require("./secret");
-
 class LibrusCore {
-  login = login;
-  password = pass;
   logged_in = false;
   Token = null;
   host = "https://api.librus.pl/";
@@ -14,8 +10,8 @@ class LibrusCore {
   authUsername(login, password) {
     var linkauth = this.host + "OAuth/Token";
     let params = {
-      username: this.login,
-      password: this.password,
+      username: login,
+      password: password,
       librus_long_term_token: "1",
       grant_type: "password",
     };
@@ -57,6 +53,9 @@ class LibrusCore {
           url: linkdata,
         },
         function (error, response, body) {
+          if(error) {
+            console.error("[Unexcepted Problem]", error);
+          }
           var result = JSON.parse(body);
           resolve(body);
         }

@@ -1,4 +1,4 @@
-# Librus API for node.js
+# Librus API for node.js (CLI Editon)
 
 ## Example Usage
 

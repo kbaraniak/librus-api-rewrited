@@ -3,6 +3,8 @@ const LibrusCore = require("../core");
 
 let core = new LibrusCore();
 
+var args = process.argv.slice(2);
+
 class LibrusGrades {
   async dumpGrades(token) {
     let gradesApi = await core.parseApi("Grades", token);
@@ -16,24 +18,46 @@ class LibrusGrades {
     let gradesApi = await core.parseApi("Grades", token);
     var grades = gradesApi["Grades"];
     var glength = parseInt(grades.length);
-    console.log("Please wait, getting grades")
-    for (const grade1 in grades) {
-      const g = grades[grade1];
-      let grade = g["Grade"];
-      let gradeId = g["Lesson"]["Id"];
-      let gradeAddDate = g["AddDate"];
 
-      var result1 = await this.gradesRun(gradeId, grade, gradeAddDate, token)
-      .then(function (categoriesArray) {
-        stepAddAllGrade++;
-        allGrades.push(categoriesArray);
+    /* Debug Module - Grades */
+
+    if(args[0] == "--debug") {
+      console.log("---------------------------------------------")
+      console.log("----------------DEBUG-DATA-------------------")
+      var_dump(grades);
+      console.log("=======================");
+      var_dump(gradesApi);
+      console.log("----------------DEBUG-DATA-------------------")
+      console.log("---------------------------------------------")
+    }
+
+    console.log("Please wait, getting grades");
+    try{
+      for (const grade1 in grades) {
+        const g = grades[grade1];
+        let grade = g["Grade"];
+        let gradeId = g["Lesson"]["Id"];
+        let gradeAddDate = g["AddDate"];
+
+        var result1 = await this.gradesRun(gradeId, grade, gradeAddDate, token)
+        .then(function (categoriesArray) {
+          stepAddAllGrade++;
+          allGrades.push(categoriesArray);
+          if (stepAddAllGrade >= glength) {
+            return allGrades;
+          }
+        });
         if (stepAddAllGrade >= glength) {
           return allGrades;
         }
-      });
-      if (stepAddAllGrade >= glength) {
-        return allGrades;
       }
+    }
+    catch (e) {
+      var_dump(e);
+      console.error("Debugger Error Data [Grades API]:")
+      var_dump(gradesApi)
+      console.error("Debugger Error Data [Grades API - display grades]:")
+      var_dump(grades)
     }
   }
 
@@ -83,7 +107,5 @@ class LibrusGrades {
   }
 
 }
-
-
 
 module.exports = LibrusGrades;

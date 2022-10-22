@@ -1,6 +1,19 @@
-const querystring = require("querystring");
-const request = require("request");
-const var_dump = require("var_dump");
+let querystring;
+let request;
+let var_dump;
+
+try{
+  querystring = require("querystring");
+  request = require("request");
+  var_dump = require("var_dump");
+}
+catch(err){
+  console.error("No found modules");
+  console.error("Please install, using below command on terminal")
+  console.log("> npm install request querystring var_dump");
+  process.exit(1);
+  
+}
 
 class LibrusCore {
   logged_in = false;

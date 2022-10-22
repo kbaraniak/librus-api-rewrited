@@ -2,7 +2,7 @@
 
 ## Example Usage
 
-### You Need to create & change a secret.js
+### You Need to create & change a config.js
 *File not added for security reasons*
 ```
 var config= {

@@ -20,8 +20,8 @@ class Librus {
     return grades.dumpGrades(token);
   }
 
-  async getTimetable(token){
-    return timetables.getTimetable(token);
+  async getTimetable(token, nextWeek){
+    return timetables.getTimetable(token, nextWeek);
   }
 
   dumpTimetable(token){

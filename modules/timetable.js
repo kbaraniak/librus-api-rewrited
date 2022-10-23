@@ -10,9 +10,18 @@ class LibrusTimetable {
     return timetables
   }
 
-  async getTimetable(token) {
-    let timetablesApi = await core.parseApi("Timetables", token);
+  async getTimetable(token, nextWeek=false) {
+    let timetablesApi;
+    if(nextWeek) {
+      let timetablesWeekApi = await core.parseApi("Timetables", token);
+      let nextWeekApi = timetablesWeekApi["Pages"]["Next"].replaceAll("https://api.librus.pl/2.0/", "");
+      timetablesApi = await core.parseApi(nextWeekApi, token);
+    }
+    else{
+      timetablesApi = await core.parseApi("Timetables", token);
+    }
     var timetables = timetablesApi["Timetable"];
+    console.log(timetablesApi["Pages"]["Next"])
     let lessonItem, schoolDay, schoolWeek = [];
     for (const day in timetables) {
       let lessonNumber = 0;

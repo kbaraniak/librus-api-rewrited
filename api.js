@@ -1,12 +1,17 @@
 const LibrusCore = require("./core");
 const LibrusGrades = require("./modules/grades");
+const LibrusTimetable = require("./modules/timetable");
 const var_dump = require('var_dump')
+
+const { login, pass } = require("./config");
 
 let core = new LibrusCore();
 let grades = new LibrusGrades();
+let timetables = new LibrusTimetable();
 
 
 class Librus {
+
   authUsername(login, pass){
     return core.authUsername(login, pass);
   }
@@ -17,6 +22,14 @@ class Librus {
 
   dumpGrades(token){
     return grades.dumpGrades(token);
+  }
+
+  async getTimetable(token){
+    return timetables.getTimetable(token);
+  }
+
+  dumpTimetable(token){
+    return timetables.dumpTimetable(token);
   }
 }
 

@@ -14,7 +14,6 @@ class LibrusTimetable {
     let timetablesApi = await core.parseApi("Timetables", token);
     var timetables = timetablesApi["Timetable"];
     let lessonItem, schoolDay, schoolWeek = [];
-    let iDay = 1;
     for (const day in timetables) {
       let lessonNumber = 0;
       var lessonDay = [];
@@ -52,12 +51,8 @@ class LibrusTimetable {
         lessonDay.push(lessonItem);
       }
 
-      schoolDay = {
-        [iDay]: lessonDay
-      }
-      schoolWeek.push(schoolDay);
+      schoolWeek.push(lessonDay);
       lessonDay = [];
-      iDay++;
     }
     return schoolWeek
   }

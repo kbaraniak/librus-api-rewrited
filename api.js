@@ -7,9 +7,7 @@ let core = new LibrusCore();
 let grades = new LibrusGrades();
 let timetables = new LibrusTimetable();
 
-
 class Librus {
-
   authUsername(login, pass){
     return core.authUsername(login, pass);
   }

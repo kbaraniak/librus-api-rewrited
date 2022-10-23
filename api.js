@@ -44,7 +44,7 @@ api.authUsername(login, pass).then(async function (token) {
 
   /* Display First Timetable Position */
   const Timetable = await api.getTimetable(token).then(data => { return data });
-  const TimetableDay = Timetable[0]['1'] // 0 - Array List, 1 - Timetable School Day
+  const TimetableDay = Timetable[0] // 0 Timetable School Day + 1 (0=1, 1=2, etc.)
   const TimetableLesson = TimetableDay[0] // 0 - Get first lesson of Day
   console.log(TimetableLesson["Day"], TimetableLesson["Name"])
 });

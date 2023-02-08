@@ -2,5 +2,5 @@
 
 ## Example Usage
 
-### You Need to cpoy `.env.example` and name it `.env` and fill it with your data
+### You Need to copy `.env.example`, rename to `.env` and fill it with your data
 

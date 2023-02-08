@@ -10,7 +10,7 @@
     "api",
     "librus"
   ],
-  "author": "kabaraniak",
+  "author": "kbaraniak",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.3"

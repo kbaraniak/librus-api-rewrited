@@ -3,7 +3,8 @@ const LibrusGrades = require("./modules/grades");
 const LibrusTimetable = require("./modules/timetable");
 const var_dump = require('var_dump')
 
-const { login, pass } = require("./config");
+const login = process.env.LIBRUS_LOGIN;
+const pass = process.env.LIBRUS_PASS;
 
 let core = new LibrusCore();
 let grades = new LibrusGrades();

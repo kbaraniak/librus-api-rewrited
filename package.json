@@ -1,18 +1,20 @@
 {
   "name": "librus-api-rewrited",
-  "version": "1.0.0",
-  "description": "api for librus",
+  "version": "1.0.15",
+  "description": "Updated Port Librus API from Python (https://github.com/dani3l0/librusik/)",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node examples/test.js"
   },
-  "keywords": [
-    "api",
-    "librus"
-  ],
   "author": "kbaraniak",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.3"
-  }
+    "axios": "^1.5.1",
+    "axios-cookiejar-support": "^4.0.7",
+    "tough-cookie": "^4.1.3"
+  },
+  "bugs": {
+    "url": "https://github.com/kbaraniak/librus-api-rewrited/issues"
+  },
+  "homepage": "https://github.com/kbaraniak/librus-api-rewrited"
 }

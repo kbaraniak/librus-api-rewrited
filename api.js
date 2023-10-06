@@ -20,7 +20,7 @@ class LibrusAPI {
       const tokenInfoResponse = await this.session.get(`${this.host}/Auth/TokenInfo`, { timeout: 5000, headers: this.headers });
       const identifier = tokenInfoResponse.data.UserIdentifier;
       const userInfoResponse = await this.session.get(`${this.host}/Auth/UserInfo/${identifier}`, { timeout: 5000 });
-      this.headers = jar.getCookiesSync(`${this.host}/Auth/UserInfo/${identifier}`).join('; ');
+      // this.headers = jar.getCookiesSync(`${this.host}/Auth/UserInfo/${identifier}`).join('; ');
       return userInfoResponse.status === 200;
     } catch (error) {
       console.error(error);
@@ -31,15 +31,16 @@ class LibrusAPI {
   async mkToken(login, pass) {
     try {
       const authUrl = 'https://api.librus.pl/OAuth/Authorization?client_id=46&response_type=code&scope=mydata';
-      const final_authUrl = 'https://api.librus.pl/OAuth/Authorization/Grant?client_id=46';
-      const authResponse = await this.session.get(authUrl); //Use the client instance
+      const final_authUrl = 'https://api.librus.pl/OAuth/Authorization?client_id=46';
+      const grandUrl = 'https://api.librus.pl/OAuth/Authorization/Grant?client_id=46';
+      await this.session.get(authUrl); //Use the client instance
       const formData = new URLSearchParams();
       formData.append('action', 'login');
       formData.append('login', login);
       formData.append('pass', pass);
-      await this.session.post('https://api.librus.pl/OAuth/Authorization?client_id=46', formData); //Use the client instance
-      const grantResponse = await this.session.get('https://api.librus.pl/OAuth/Authorization/Grant?client_id=46'); //Use the client instance
-      this.headers = jar.getCookiesSync(final_authUrl).join('; '); //Use jar directly
+      await this.session.post(final_authUrl, formData); //Use the client instance
+      const grantResponse = await this.session.get(grandUrl); //Use the client instance
+      // this.headers = jar.getCookiesSync(final_authUrl).join('; '); //Use jar directly
       const ok = grantResponse.status === 200;
       let res = false;
       if (ok) {
@@ -53,103 +54,92 @@ class LibrusAPI {
 
   /* Grades API */
   async getGrades() {
-    await this.session.get(`${this.host}/Grades`)
-      .then((r) => {
-        return r.data
-      })
+    try {
+      const response = await this.session.get(`${this.host}/Grades`)
+      return response.data;
+    } catch (error) {
+      console.log("[LibrusAPI: Grades] School doesn't support this function");
+      throw error;
+    }
   }
   async getGradesAverages() {
-    await this.session.get(`${this.host}/Grades/Averages`)
-      .then((r) => {
-        return r.data
-      })
+    const response = await this.session.get(`${this.host}/Grades/Averages`)
+    return response.data;
   }
   async getGradesCategoriesAverages() {
-    await this.session.get(`${this.host}/Grades/CategoriesAverages`)
-      .then((r) => {
-        return r.data
-      })
+    const response = await this.session.get(`${this.host}/Grades/CategoriesAverages`)
+      return response.data;
   }
-  async getGradesCategories() {
-    await this.session.get(`${this.host}/Grades/Categories`)
-      .then((r) => {
-        return r.data
-      })
+  async getGradesCategories(id) {
+    const response = await this.session.get(`${this.host}/Grades/Categories/${String(id)}`)
+    return response.data;
   }
-  async getGradesComments() {
-    await this.session.get(`${this.host}/Grades/Comments`)
-      .then((r) => {
-        return r.data
-      })
+  async getGradesComments(id) {
+    const response =  await this.session.get(`${this.host}/Grades/Comments${String(id)}`)
+    return response.data;
   }
   async getGradesScales() {
-    await this.session.get(`${this.host}/Grades/Scales`)
-      .then((r) => {
-        return r.data
-      })
+    const response = await this.session.get(`${this.host}/Grades/Scales`)
+    return response.data;
   }
   async getGradesTypes() {
-    await this.session.get(`${this.host}/Grades/Types`)
-      .then((r) => {
-        return r.data
-      })
+    const response = await this.session.get(`${this.host}/Grades/Types`)
+    return response.data;
   }
   async getGradesUnpreparednessPerSemesterAndSubject() {
-    await this.session.get(`${this.host}/Grades/UnpreparednessPerSemesterAndSubject`)
-      .then((r) => {
-        return r.data
-      })
+    const response = await this.session.get(`${this.host}/Grades/UnpreparednessPerSemesterAndSubject`)
+    return response.data;
   }
   /* To-Do TextGrades */
 
   /* Point Grades API */
   async getPointGrades() {
-    await this.session.get(`${this.host}/PointGrades`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
-        console.log("[LibrusAPI: PointGrades] School doesn't support this function")
-      })
+    try {
+      const response = await this.session.get(`${this.host}/PointGrades`)
+      return response.data
+    } catch (error) {
+      console.log("[LibrusAPI: PointGrades] School doesn't support this function")
+    }
   }
   async getPointGradesCategories() {
-    await this.session.get(`${this.host}/PointGrades/Categories`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
-        console.log("[LibrusAPI: PointGradesCategories] School doesn't support this function")
-      })
+    try {
+      const response = await this.session.get(`${this.host}/PointGrades/Categories`)
+      return response.data
+    } catch (error) {
+      console.log("[LibrusAPI: PointGradesCategories] School doesn't support this function")
+    }
   }
   async getPointGradesDictionaries() {
-    await this.session.get(`${this.host}/PointGrades/Dictionaries`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
-        console.log("[LibrusAPI: PointGradesDictionaries] School doesn't support this function")
-      })
+    try {
+      const response = await this.session.get(`${this.host}/PointGrades/Dictionaries`)
+      return response.data
+    } catch (error) {
+      console.log("[LibrusAPI: PointGradesDictionaries] School doesn't support this function")
+    }
   }
   async getPointGradesAverages() {
-    await this.session.get(`${this.host}/PointGrades/Averages`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
+    try {
+      const response = await this.session.get(`${this.host}/PointGrades/Averages`)
+      return response.data
+    } catch (error) {
         console.log("[LibrusAPI: PointGradesAverages] School doesn't support this function")
-      })
+    }
   }
   async getPointGradesStudentsAverages() {
-    await this.session.get(`${this.host}/PointGrades/StudentsAverages`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
+    try {
+      const response = await this.session.get(`${this.host}/PointGrades/StudentsAverages`)
+      return response.data
+    } catch (error) {
         console.log("[LibrusAPI: PointGradesAverages] School doesn't support this function")
-      })
+    }
   }
   async getPointGradesCategoriesAverages() {
-    await this.session.get(`${this.host}/PointGrades/CategoriesAverages`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
+    try {
+      const response = await this.session.get(`${this.host}/PointGrades/CategoriesAverages`)
+      return response.data
+    } catch (error) {
         console.log("[LibrusAPI: PointGradesAverages] School doesn't support this function")
-      })
+    }
   }
 
   /* Behaviour Grades API */
@@ -158,78 +148,70 @@ class LibrusAPI {
     console.log(response_Behaviour.data)
   }
   async getBehaviourGradesTypes() {
-    await this.session.get(`${this.host}/BehaviourGrades/Types`)
-      .then((r) => {
-        return r.data
-      }).catch((e) => {
+    try {
+      const response = await this.session.get(`${this.host}/BehaviourGrades/Types`)
+      return response.data
+    } catch (error) {
         console.log("[LibrusAPI: BehaviourGradesTypes] School doesn't support this function")
-      })
+    }
   }
   async getBehaviourGradesPoints() {
-    await this.session.get(`${this.host}/BehaviourGrades/Points`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
+    try {
+      const response = await this.session.get(`${this.host}/BehaviourGrades/Points`)
+      return response.data
+    } catch (error) {
         console.log("[LibrusAPI: BehaviourGradesPoints] School doesn't support this function")
-      })
+    }
   }
   async getBehaviourGradesPointsCategories() {
-    await this.session.get(`${this.host}/BehaviourGrades/Points/Categories`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
+    try {
+      const response = await this.session.get(`${this.host}/BehaviourGrades/Points/Categories`)
+      return response.data
+    } catch (error) {
         console.log("[LibrusAPI: BehaviourGradesPointsCategories] School doesn't support this function")
-      })
+    }
   }
   async getBehaviourGradesPointsComments() {
-    await this.session.get(`${this.host}/BehaviourGrades/Points/Comments`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
+    try {
+      const response = await this.session.get(`${this.host}/BehaviourGrades/Points/Comments`)
+      return response.data
+    } catch (error) {
         console.log("[LibrusAPI: BehaviourGradesPointsCategories] School doesn't support this function")
-      })
+    }
   }
   async getBehaviourGradesSystemProposal() {
-    await this.session.get(`${this.host}/BehaviourGrades/SystemProposal`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
+    try {
+      const response = await this.session.get(`${this.host}/BehaviourGrades/SystemProposal`)
+      return response.data
+    } catch (error) {
         console.log("[LibrusAPI: BehaviourGradesSystemProposal] School doesn't support this function")
-      })
+    }
   }
 
   /* Lessons API */
-  async getLessons() {
-    await this.session.get(`${this.host}/Lessons`)
-      .then((r) => {
-        return r.data
-      })
+  async getLessons(id="") {
+    const response = await this.session.get(`${this.host}/Lessons/${String(id)}`)
+    return response.data;
   }
   async getAttendances() {
-    await this.session.get(`${this.host}/Attendances`)
-      .then((r) => {
-        return r.data
-      })
+    const response = await this.session.get(`${this.host}/Attendances`)
+    return response.data;
   }
   async getAttendancesTypes() {
-    await this.session.get(`${this.host}/Attendances/Types`)
-      .then((r) => {
-        return r.data
-      })
+    const response = await this.session.get(`${this.host}/Attendances/Types`)
+    return response.data;
   }
   async getAttendancesLessonsStatistics(id) {
-    await this.session.get(`${this.host}/Attendances/LessonsStatistics/${id}`)
-      .then((r) => {
-        return r.data
-      })
+    const response = await this.session.get(`${this.host}/Attendances/LessonsStatistics/${id}`)
+    return response.data;
   }
   async getAttendancesFilledByTeacher(id = "") {
-    await this.session.get(`${this.host}/Attendances/FilledByTeacher/${id}`)
-      .then((r) => {
-        return r.data
-      }).catch(() => {
-        console.log("[LibrusAPI: AttendancesFilledByTeacher] School doesn't support this function")
-      })
+    try {
+      const response = await this.session.get(`${this.host}/Attendances/FilledByTeacher/${id}`)
+      return response.data
+    } catch (error) {
+      console.log("[LibrusAPI: AttendancesFilledByTeacher] School doesn't support this function")
+    }
   }
   async getTimetables() {
     try {
@@ -278,9 +260,9 @@ class LibrusAPI {
       throw error;
     }
   }
-  async getSubjects() {
+  async getSubjects(id="") {
     try {
-      const response = await this.session.get(`${this.host}/Subjects`);
+      const response = await this.session.get(`${this.host}/Subjects/${String(id)}`);
       return response.data;
     } catch (error) {
       console.error("[LibrusAPI: Subjects] School doesn't support this function", error);
@@ -444,9 +426,9 @@ class LibrusAPI {
       throw error;
     }
   }
-  async getUsers() {
+  async getUsers(id="") {
     try {
-      const response = await this.session.get(`${this.host}/Users`);
+      const response = await this.session.get(`${this.host}/Users/${String(id)}`);
       return response.data;
     } catch (error) {
       console.error("[LibrusAPI: Users] School doesn't support this function", error);
@@ -461,6 +443,9 @@ class LibrusAPI {
       console.error("[LibrusAPI: getAPI] Invalid Endpoint: " + endpoint, error);
       throw error;
     }
+  }
+  returnApiURL(){
+    return API_URL;
   }
 }
 

@@ -145,7 +145,7 @@ class LibrusAPI {
   /* Behaviour Grades API */
   async getBehaviourGrades() {
     const response_Behaviour = await this.session.get(`${this.host}/BehaviourGrades`)
-    console.log(response_Behaviour.data)
+    return response_Behaviour.data
   }
   async getBehaviourGradesTypes() {
     try {
@@ -211,6 +211,42 @@ class LibrusAPI {
       return response.data
     } catch (error) {
       console.log("[LibrusAPI: AttendancesFilledByTeacher] School doesn't support this function")
+    }
+  }
+  async getCalendar(id="") {
+    try {
+      const response = await this.session.get(`${this.host}/Calendars/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log("[LibrusAPI: Calendar] School doesn't support this function");
+      throw error;
+    }
+  }
+  async getCalendarSubstitutions(id="") {
+    try {
+      const response = await this.session.get(`${this.host}/Calendars/Substitutions/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log("[LibrusAPI: CalendarSubstitutions] School doesn't support this function");
+      throw error;
+    }
+  }
+  async getHomeWorks(){
+    try {
+      const response = await this.session.get(`${this.host}/HomeWorks`);
+      return response.data;
+    } catch (error) {
+      console.log("[LibrusAPI: HomeWorks] School doesn't support this function");
+      throw error;
+    }
+  }
+  async getHomeWorksCategories(id=""){
+    try {
+      const response = await this.session.get(`${this.host}/HomeWorks/Categories/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log("[LibrusAPI: HomeWorks] School doesn't support this function");
+      throw error;
     }
   }
   async getTimetables() {
@@ -365,7 +401,7 @@ class LibrusAPI {
   }
   async getClassesCrossedOutStudents() {
     try {
-      const response = await this.session.get(`${this.host}/Classes /CrossedOutStudents`);
+      const response = await this.session.get(`${this.host}/Classes/CrossedOutStudents`);
       return response.data;
     } catch (error) {
       console.error("[LibrusAPI: ClassesCrossedOutStudents] School doesn't support this function", error);
@@ -384,7 +420,8 @@ class LibrusAPI {
   async getEndpoints() {
     try {
       const response = await this.session.get(`${this.host}/Root`);
-      return response.data;
+      // return response.data;
+      console.log(response)
     } catch (error) {
       console.error("[LibrusAPI: Root] School doesn't support this function", error);
       throw error;

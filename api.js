@@ -8,7 +8,7 @@ const AuthAPI = require("./API/Auth/Auth");
 // Grades
 const GradesAPI = require("./API/Grades/Grades");
 const PointGradesAPI = require("./API/Grades/PointGrades");
-const BehaviourGrades = require("./API/Grades/BehaviourGrades");
+const BehaviourGradesAPI = require("./API/Grades/BehaviourGrades");
 // Lesson
 const LessonAPI = require("./API/Lesson/Lesson");
 const CalendarAPI = require("./API/Lesson/Calendar");
@@ -33,7 +33,7 @@ class LibrusAPI {
       authAPI: new AuthAPI(this.session),
       gradesAPI: new GradesAPI(this.session),
       pointGradesAPI: new PointGradesAPI(this.session),
-      behaviourGradesAPI: new BehaviourGrades(this.session),
+      behaviourGradesAPI: new BehaviourGradesAPI(this.session),
       lessonAPI: new LessonAPI(this.session),
       calendarAPI: new CalendarAPI(this.session),
       schoolAPI: new SchoolAPI(this.session),

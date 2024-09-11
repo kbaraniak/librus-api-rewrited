@@ -1,4 +1,4 @@
-class BehaviourGrades {
+class BehaviourGradesAPI {
     constructor(session) {
         this.session = session
     }
@@ -49,4 +49,4 @@ class BehaviourGrades {
     }
 }
 
-module.exports = BehaviourGrades;
+module.exports = BehaviourGradesAPI;

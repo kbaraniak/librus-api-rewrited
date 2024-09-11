@@ -8,9 +8,13 @@ const API_URL = 'https://synergia.librus.pl/gateway/api/2.0';
 const MSG_URL = 'https://synergia.librus.pl';
 
 const AuthAPI = require("./API/Auth/Auth");
+// Grades
 const GradesAPI = require("./API/Grades/Grades");
 const PointGradesAPI = require("./API/Grades/PointGrades");
 const BehaviourGrades = require("./API/Grades/BehaviourGrades")
+// Lesson
+const LessonAPI = require("./API/Lesson/Lesson")
+const CalendarAPI = require("./API/Lesson/Calendar")
 
 class LibrusAPI {
   constructor() {
@@ -25,6 +29,9 @@ class LibrusAPI {
       gradesAPI: new GradesAPI(this.session),
       pointGradesAPI: new PointGradesAPI(this.session),
       behaviourGradesAPI: new BehaviourGrades(this.session),
+      lessonAPI: new LessonAPI(this.session),
+      calendarAPI: new CalendarAPI(this.session),
+
     };
   }
 
@@ -97,19 +104,19 @@ class LibrusAPI {
 
   /* Behaviour Grades API */
   async getBehaviourGrades() {
-    return this.api.behaviourGradesAPI.getBehaviourGrades()
+    return this.api.behaviourGradesAPI.getBehaviourGrades();
   }
   async getBehaviourGradesTypes() {
-    return this.api.behaviourGradesAPI.getBehaviourGradesTypes()
+    return this.api.behaviourGradesAPI.getBehaviourGradesTypes();
   }
   async getBehaviourGradesPoints() {
-    return this.api.behaviourGradesAPI.getBehaviourGradesPoints()
+    return this.api.behaviourGradesAPI.getBehaviourGradesPoints();
   }
   async getBehaviourGradesPointsCategories() {
-    return this.api.behaviourGradesAPI.getBehaviourGradesPointsCategories()
+    return this.api.behaviourGradesAPI.getBehaviourGradesPointsCategories();
   }
   async getBehaviourGradesPointsComments() {
-    return this.api.behaviourGradesAPI.getBehaviourGradesPointsComments()
+    return this.api.behaviourGradesAPI.getBehaviourGradesPointsComments();
   }
   async getBehaviourGradesSystemProposal() {
     return this.api.behaviourGradesAPI.getBehaviourGradesSystemProposal();
@@ -117,138 +124,53 @@ class LibrusAPI {
 
   /* Lessons API */
   async getLessons(id = "") {
-    const response = await this.session.client.get(`${this.host}/Lessons/${String(id)}`)
-    return response.data;
+    return this.api.lessonAPI.getLessons(id);
   }
   async getAttendances() {
-    const response = await this.session.client.get(`${this.host}/Attendances`)
-    return response.data;
+    return this.api.lessonAPI.getAttendances();
   }
   async getAttendancesTypes() {
-    const response = await this.session.client.get(`${this.host}/Attendances/Types`)
-    return response.data;
+    return this.api.lessonAPI.getAttendancesTypes();
   }
   async getAttendancesLessonsStatistics(id) {
-    const response = await this.session.client.get(`${this.host}/Attendances/LessonsStatistics/${id}`)
-    return response.data;
+    return this.api.lessonAPI.getAttendancesLessonsStatistics(id);
   }
   async getAttendancesFilledByTeacher(id = "") {
-    try {
-      const response = await this.session.client.get(`${this.host}/Attendances/FilledByTeacher/${id}`)
-      return response.data
-    } catch (error) {
-      console.log("[LibrusAPI: AttendancesFilledByTeacher] School doesn't support this function")
-    }
-  }
-  async getCalendar(id = "") {
-    try {
-      const response = await this.session.client.get(`${this.host}/Calendars/${id}`);
-      return response.data;
-    } catch (error) {
-      console.log("[LibrusAPI: Calendar] School doesn't support this function");
-      throw error;
-    }
-  }
-  async getCalendarSubstitutions(id = "") {
-    try {
-      const response = await this.session.client.get(`${this.host}/Calendars/Substitutions/${id}`);
-      return response.data;
-    } catch (error) {
-      console.log("[LibrusAPI: CalendarSubstitutions] School doesn't support this function");
-      throw error;
-    }
-  }
-  async getHomeWorks() {
-    try {
-      const response = await this.session.client.get(`${this.host}/HomeWorks`);
-      return response.data;
-    } catch (error) {
-      console.log("[LibrusAPI: HomeWorks] School doesn't support this function");
-      throw error;
-    }
-  }
-  async getHomeWorksCategories(id = "") {
-    try {
-      const response = await this.session.client.get(`${this.host}/HomeWorks/Categories/${id}`);
-      return response.data;
-    } catch (error) {
-      console.log("[LibrusAPI: HomeWorks] School doesn't support this function");
-      throw error;
-    }
-  }
-  async getTimetables() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Timetables`);
-      return response.data;
-    } catch (error) {
-      console.log("[LibrusAPI: Timetables] School doesn't support this function");
-      throw error;
-    }
-  }
-  async getTimetablesDate(arg) {
-    try {
-      const response = await this.session.client.get(`${this.host}/Timetables?${arg}`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: TimetablesDate] School doesn't support this function", error);
-      throw error;
-    }
-  }
-  async getTimetablesNext() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Timetables`);
-      const nextWeek = response.data["Pages"]["Next"].split("?")[1];
-      return await this.getTimetablesDate(nextWeek);
-    } catch (error) {
-      console.error("[LibrusAPI: TimetablesNext] School doesn't support this function", error);
-      throw error;
-    }
-  }
-  async getTimetablesPrev() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Timetables`);
-      const previousWeek = response.data["Pages"]["Prev"].split("?")[1];
-      return await this.getTimetablesDate(previousWeek);
-    } catch (error) {
-      console.error("[LibrusAPI: TimetablesPrev] School doesn't support this function", error);
-      throw error;
-    }
-  }
-  async getSubstitutions() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Substitutions`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Substitutions] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.lessonAPI.getAttendancesFilledByTeacher(id);
   }
   async getSubjects(id = "") {
-    try {
-      const response = await this.session.client.get(`${this.host}/Subjects/${String(id)}`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Subjects] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.lessonAPI.getSubjects(id);
+  }
+  /* Calendar API */
+  async getCalendar(id = "") {
+    return this.api.calendarAPI.getCalendar(id);
+  }
+  async getCalendarSubstitutions(id = "") {
+    return this.api.calendarAPI.getCalendarSubstitutions(id);
+  }
+  async getHomeWorks() {
+    return this.api.calendarAPI.getHomeWorks();
+  }
+  async getHomeWorksCategories(id = "") {
+    return this.api.calendarAPI.getHomeWorksCategories(id)
+  }
+  async getTimetables() {
+    return this.api.calendarAPI.getTimetables();
+  }
+  async getTimetablesDate(arg) {
+    return this.api.calendarAPI.getTimetablesDate(arg);
+  }
+  async getTimetablesNext() {
+    return this.api.calendarAPI.getTimetablesNext();
+  }
+  async getTimetablesPrev() {
+    return this.api.calendarAPI.getTimetablesPrev();
+  }
+  async getSubstitutions() {
+    return this.api.calendarAPI.getSubstitutions();
   }
   async getTeacherFreeDays() {
-    try {
-      const response = await this.session.client.get(`${this.host}/TeacherFreeDays`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: TeacherFreeDays] School doesn't support this function", error);
-      throw error;
-    }
-  }
-  async getLuckyNumber() {
-    try {
-      const response = await this.session.client.get(`${this.host}/LuckyNumbers`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: LuckyNumber] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.calendarAPI.getTeacherFreeDays();
   }
 
   /* School API */
@@ -307,6 +229,16 @@ class LibrusAPI {
     }
   }
 
+  async getLuckyNumber() {
+    try {
+      const response = await this.session.client.get(`${this.host}/LuckyNumbers`);
+      return response.data;
+    } catch (error) {
+      console.error("[LibrusAPI: LuckyNumber] School doesn't support this function", error);
+      throw error;
+    }
+  }
+
   /* Class API */
   async getClassesFreeDays() {
     try {
@@ -335,6 +267,8 @@ class LibrusAPI {
       throw error;
     }
   }
+
+  /* Other */
   async getHelp() {
     try {
       const response = await this.session.client.get(`${this.host}/Help`);
@@ -372,21 +306,21 @@ class LibrusAPI {
       throw error;
     }
   }
-  async getMe() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Me`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Me] School doesn't support this function", error);
-      throw error;
-    }
-  }
   async getColors() {
     try {
       const response = await this.session.client.get(`${this.host}/Colors`);
       return response.data;
     } catch (error) {
       console.error("[LibrusAPI: Colors] School doesn't support this function", error);
+      throw error;
+    }
+  }
+  async getMe() {
+    try {
+      const response = await this.session.client.get(`${this.host}/Me`);
+      return response.data;
+    } catch (error) {
+      console.error("[LibrusAPI: Me] School doesn't support this function", error);
       throw error;
     }
   }

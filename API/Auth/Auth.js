@@ -1,15 +1,14 @@
 class AuthAPI {
   constructor(session) {
-    this.API_URL = 'https://synergia.librus.pl/gateway/api/2.0';
     this.session = session
   }
 
   async activateApiAccess() {
     const headers = this.session.headers
     try {
-      const tokenInfoResponse = await this.session.client.get(`${this.API_URL}/Auth/TokenInfo`, { timeout: 5000, headers });
+      const tokenInfoResponse = await this.session.client.get(`${this.session.api.url}/Auth/TokenInfo`, { timeout: 5000, headers });
       const identifier = tokenInfoResponse.data.UserIdentifier;
-      const userInfoResponse = await this.session.client.get(`${this.API_URL}/Auth/UserInfo/${identifier}`, { timeout: 5000 });
+      const userInfoResponse = await this.session.client.get(`${this.session.api.url}/Auth/UserInfo/${identifier}`, { timeout: 5000 });
       return userInfoResponse.status === 200;
     } catch (error) {
       console.error(error);

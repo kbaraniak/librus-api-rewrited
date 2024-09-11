@@ -1,12 +1,11 @@
 class ClassAPI{
     constructor(session) {
-        this.API_URL = 'https://synergia.librus.pl/gateway/api/2.0';
         this.session = session
     }
 
     async getClassesFreeDays() {
         try {
-          const response = await this.session.client.get(`${this.host}/ClassFreeDays`);
+          const response = await this.session.client.get(`${this.session.api.url}/ClassFreeDays`);
           return response.data;
         } catch (error) {
           console.error("[LibrusAPI: ClassFreeDays] School doesn't support this function", error);
@@ -15,7 +14,7 @@ class ClassAPI{
       }
       async getClasses() {
         try {
-          const response = await this.session.client.get(`${this.host}/Classes`);
+          const response = await this.session.client.get(`${this.session.api.url}/Classes`);
           return response.data;
         } catch (error) {
           console.error("[LibrusAPI: Classes] School doesn't support this function", error);
@@ -24,7 +23,7 @@ class ClassAPI{
       }
       async getClassesCrossedOutStudents() {
         try {
-          const response = await this.session.client.get(`${this.host}/Classes/CrossedOutStudents`);
+          const response = await this.session.client.get(`${this.session.api.url}/Classes/CrossedOutStudents`);
           return response.data;
         } catch (error) {
           console.error("[LibrusAPI: ClassesCrossedOutStudents] School doesn't support this function", error);
@@ -33,7 +32,7 @@ class ClassAPI{
       }
     async getVirtualClasses() {
         try {
-            const response = await this.session.client.get(`${this.API_URL}/VirtualClasses`);
+            const response = await this.session.client.get(`${this.session.api.url}/VirtualClasses`);
             return response.data;
         } catch (error) {
             console.error("[LibrusAPI: VirtualClasses] School doesn't support this function", error);

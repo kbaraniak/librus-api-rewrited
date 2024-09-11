@@ -4,9 +4,6 @@ const { CookieJar } = require('tough-cookie');
 const jar = new CookieJar();
 const client = cookieSupport.wrapper(axios.create({ jar }));
 
-const API_URL = 'https://synergia.librus.pl/gateway/api/2.0';
-const MSG_URL = 'https://synergia.librus.pl';
-
 const AuthAPI = require("./API/Auth/Auth");
 // Grades
 const GradesAPI = require("./API/Grades/Grades");
@@ -24,11 +21,13 @@ const OtherEndpointsAPI = require("./API/Other/OtherEndpoints");
 
 class LibrusAPI {
   constructor() {
-    this.host = API_URL;
-    this.msg_host = MSG_URL;
     this.session = {
       headers: {},
       client: client,
+      api: {
+        url: 'https://synergia.librus.pl/gateway/api/2.0',
+        message_url: 'https://synergia.librus.pl',
+      },
     }
     this.api = {
       authAPI: new AuthAPI(this.session),
@@ -242,7 +241,7 @@ class LibrusAPI {
     return this.api.endpointsAPI.getEndpoints(endpoint);
   }
   returnApiURL() {
-    return API_URL;
+    return this.session.api.url;
   }
 }
 

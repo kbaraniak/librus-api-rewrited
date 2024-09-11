@@ -1,12 +1,11 @@
 class SchoolAPI {
     constructor(session) {
-        this.API_URL = 'https://synergia.librus.pl/gateway/api/2.0';
         this.session = session
     }
 
     async getSchool() {
         try {
-            const response = await this.session.client.get(`${this.API_URL}/Schools`);
+            const response = await this.session.client.get(`${this.session.api.url}/Schools`);
             return response.data;
         } catch (error) {
             console.error("[LibrusAPI: School] School doesn't support this function", error);
@@ -15,7 +14,7 @@ class SchoolAPI {
     }
     async getClassrooms() {
         try {
-            const response = await this.session.client.get(`${this.API_URL}/Classrooms`);
+            const response = await this.session.client.get(`${this.session.api.url}/Classrooms`);
             return response.data;
         } catch (error) {
             console.error("[LibrusAPI: Classrooms] School doesn't support this function", error);
@@ -24,7 +23,7 @@ class SchoolAPI {
     }
     async getSchoolNotices() {
         try {
-            const response = await this.session.client.get(`${this.API_URL}/SchoolNotices`);
+            const response = await this.session.client.get(`${this.session.api.url}/SchoolNotices`);
             return response.data;
         } catch (error) {
             console.error("[LibrusAPI: SchoolNotices] School doesn't support this function", error);
@@ -33,7 +32,7 @@ class SchoolAPI {
     }
     async getRealizationsTypesOfDays() {
         try {
-            const response = await this.session.client.get(`${this.API_URL}/Realizations/TypesOfDays`);
+            const response = await this.session.client.get(`${this.session.api.url}/Realizations/TypesOfDays`);
             return response.data;
         } catch (error) {
             console.error("[LibrusAPI: RealizationsTypesOfDays] School doesn't support this function", error);
@@ -42,7 +41,7 @@ class SchoolAPI {
     }
     async getRealizationsTypesOfClasses() {
         try {
-            const response = await this.session.client.get(`${this.API_URL}/Realizations/TypesOfClasses`);
+            const response = await this.session.client.get(`${this.session.api.url}/Realizations/TypesOfClasses`);
             return response.data;
         } catch (error) {
             console.error("[LibrusAPI: RealizationsTypesOfClasses] School doesn't support this function", error);
@@ -51,7 +50,7 @@ class SchoolAPI {
     }
     async getLuckyNumber() {
         try {
-            const response = await this.session.client.get(`${this.API_URL}/LuckyNumbers`);
+            const response = await this.session.client.get(`${this.session.api.url}/LuckyNumbers`);
             return response.data;
         } catch (error) {
             console.error("[LibrusAPI: LuckyNumber] School doesn't support this function", error);

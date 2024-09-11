@@ -1,6 +1,6 @@
 {
   "name": "librus-api-rewrited",
-  "version": "2.0",
+  "version": "2.0.0",
   "description": "Updated Port Librus API from Python (https://github.com/dani3l0/librusik/)",
   "main": "api.js",
   "scripts": {

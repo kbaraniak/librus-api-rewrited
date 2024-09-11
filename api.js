@@ -238,7 +238,7 @@ class LibrusAPI {
     return this.api.endpointsAPI.getMe();
   }
   async getAPI(endpoint) {
-    return this.api.endpointsAPI.getEndpoints(endpoint);
+    return this.api.endpointsAPI.getAPI(endpoint);
   }
   returnApiURL() {
     return this.session.api.url;

@@ -11,5 +11,8 @@ or
 
 `git clone https://github.com/kbaraniak/librus-api-rewrited`
 
+### Download other releases
+https://github.com/kbaraniak/librus-api-rewrited/releases
+
 ### Endpoints
 [API Endpoints](https://github.com/kbaraniak/librus-api-rewrited/wiki/API-Endpoints)

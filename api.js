@@ -11,13 +11,16 @@ const AuthAPI = require("./API/Auth/Auth");
 // Grades
 const GradesAPI = require("./API/Grades/Grades");
 const PointGradesAPI = require("./API/Grades/PointGrades");
-const BehaviourGrades = require("./API/Grades/BehaviourGrades")
+const BehaviourGrades = require("./API/Grades/BehaviourGrades");
 // Lesson
-const LessonAPI = require("./API/Lesson/Lesson")
-const CalendarAPI = require("./API/Lesson/Calendar")
+const LessonAPI = require("./API/Lesson/Lesson");
+const CalendarAPI = require("./API/Lesson/Calendar");
 // School
 const SchoolAPI = require("./API/School/School");
 const ClassAPI = require("./API/School/Class");
+// Other
+const EndpointsAPI = require("./API/Other/Endpoints");
+const OtherEndpointsAPI = require("./API/Other/OtherEndpoints");
 
 class LibrusAPI {
   constructor() {
@@ -35,8 +38,9 @@ class LibrusAPI {
       lessonAPI: new LessonAPI(this.session),
       calendarAPI: new CalendarAPI(this.session),
       schoolAPI: new SchoolAPI(this.session),
-      classAPI: new ClassAPI(this.session)
-
+      classAPI: new ClassAPI(this.session),
+      endpointsAPI: new EndpointsAPI(this.session),
+      otherEndpointsAPI: new OtherEndpointsAPI(this.session)
     };
   }
 
@@ -214,77 +218,28 @@ class LibrusAPI {
 
   /* Other */
   async getHelp() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Help`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Help] School doesn't support this function", error);
-      throw error;
-    }
-  }
-  async getEndpoints() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Root`);
-      // return response.data;
-      console.log(response)
-    } catch (error) {
-      console.error("[LibrusAPI: Root] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.otherEndpointsAPI.getHelp();
   }
   async getWhatsNew() {
-    try {
-      const response = await this.session.client.get(`${this.host}/WhatsNew`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: WhatsNew] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.otherEndpointsAPI.getWhatsNew();
   }
   async getNotificationCenter() {
-    try {
-      const response = await this.session.client.get(`${this.host}/NotificationCenter`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: NotificationCenter] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.otherEndpointsAPI.getNotificationCenter();
   }
   async getColors() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Colors`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Colors] School doesn't support this function", error);
-      throw error;
-    }
-  }
-  async getMe() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Me`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Me] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.otherEndpointsAPI.getColors();
   }
   async getUsers(id = "") {
-    try {
-      const response = await this.session.client.get(`${this.host}/Users/${String(id)}`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Users] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.otherEndpointsAPI.getUsers(id);
+  }
+  async getEndpoints() {
+    return this.api.endpointsAPI.getEndpoints();
+  }
+  async getMe() {
+    return this.api.endpointsAPI.getMe();
   }
   async getAPI(endpoint) {
-    try {
-      const response = await this.session.client.get(`${this.host}/${endpoint}`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: getAPI] Invalid Endpoint: " + endpoint, error);
-      throw error;
-    }
+    return this.api.endpointsAPI.getEndpoints(endpoint);
   }
   returnApiURL() {
     return API_URL;

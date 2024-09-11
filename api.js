@@ -15,6 +15,9 @@ const BehaviourGrades = require("./API/Grades/BehaviourGrades")
 // Lesson
 const LessonAPI = require("./API/Lesson/Lesson")
 const CalendarAPI = require("./API/Lesson/Calendar")
+// School
+const SchoolAPI = require("./API/School/School");
+const ClassAPI = require("./API/School/Class");
 
 class LibrusAPI {
   constructor() {
@@ -31,6 +34,8 @@ class LibrusAPI {
       behaviourGradesAPI: new BehaviourGrades(this.session),
       lessonAPI: new LessonAPI(this.session),
       calendarAPI: new CalendarAPI(this.session),
+      schoolAPI: new SchoolAPI(this.session),
+      classAPI: new ClassAPI(this.session)
 
     };
   }
@@ -59,7 +64,6 @@ class LibrusAPI {
   async getGradesCategories(id) {
     return this.api.gradesAPI.getGradesCategories(id, );
   }
-
   async getGradesComments(id) {
     return this.api.gradesAPI.getGradesComments(id, );
   }
@@ -175,97 +179,37 @@ class LibrusAPI {
 
   /* School API */
   async getSchool() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Schools`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: School] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.schoolAPI.getSchool();
   }
   async getClassrooms() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Classrooms`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Classrooms] School doesn't support this function", error);
-      throw error;
-    }
-  }
-  async getVirtualClasses() {
-    try {
-      const response = await this.session.client.get(`${this.host}/VirtualClasses`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: VirtualClasses] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.schoolAPI.getClassrooms();
   }
   async getSchoolNotices() {
-    try {
-      const response = await this.session.client.get(`${this.host}/SchoolNotices`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: SchoolNotices] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.schoolAPI.getSchoolNotices();
   }
   async getRealizationsTypesOfDays() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Realizations/TypesOfDays`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: RealizationsTypesOfDays] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.schoolAPI.getRealizationsTypesOfDays();
   }
   async getRealizationsTypesOfClasses() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Realizations/TypesOfClasses`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: RealizationsTypesOfClasses] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.schoolAPI.getRealizationsTypesOfClasses();
   }
 
   async getLuckyNumber() {
-    try {
-      const response = await this.session.client.get(`${this.host}/LuckyNumbers`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: LuckyNumber] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.schoolAPI.getLuckyNumber();
   }
 
   /* Class API */
   async getClassesFreeDays() {
-    try {
-      const response = await this.session.client.get(`${this.host}/ClassFreeDays`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: ClassFreeDays] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.classAPI.getClassesFreeDays();
   }
   async getClasses() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Classes`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: Classes] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.classAPI.getClasses();
   }
   async getClassesCrossedOutStudents() {
-    try {
-      const response = await this.session.client.get(`${this.host}/Classes/CrossedOutStudents`);
-      return response.data;
-    } catch (error) {
-      console.error("[LibrusAPI: ClassesCrossedOutStudents] School doesn't support this function", error);
-      throw error;
-    }
+    return this.api.classAPI.getClassesCrossedOutStudents();
+  }
+  async getVirtualClasses() {
+    return this.api.classAPI.getVirtualClasses();
   }
 
   /* Other */

@@ -1,6 +1,5 @@
 class PointGradesAPI {
     constructor(session) {
-
         this.session = session
       }
 
